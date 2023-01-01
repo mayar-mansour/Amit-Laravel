@@ -15,7 +15,7 @@
     <div class="container mt-5">
 
 
-
+<a href="{{route('product.index')}}" class="btn btn-primary">CREATE NEW Product</a>
 
 
         <table class="table table-striped" id="users-table">
@@ -39,7 +39,7 @@
                                 <form method="get" action="{{route('product.delete',$product->id)}}">
 
                             <button type="submit" class="btn btn-danger btn-sm">Delete</button>
-                            {{-- <a type="submit" href="{{route('product.edit',$product->id)}}" class="btn btn-primary btn-sm">update</a> --}}
+                            <a type="submit" href="{{route('product.edit',$product->id)}}" class="btn btn-primary btn-sm">update</a>
                             {{-- <a type="submit" href="{{route('product.display',$product->id)}}" class="btn btn-success btn-sm">View</a> --}}
                         </form>
                             </td>

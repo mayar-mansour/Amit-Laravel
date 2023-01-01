@@ -67,45 +67,5 @@ class AdminController extends Controller
         //   dd($categories);
         return view('display_category', compact('categories'));
     }
-    public function indexProduct()
-    {
-        $categories = Catgeory::all();
-        return view('create_product',compact('categories'));
-    }
-    public function createProduct(Request $request)
-    {
-        // dd('ttt');
-        $request->validate([
-            'name' => 'required|max:30|unique:catgeories',
-        ]);
-        $product = $request->all();
-        //  dd($request->name);
-        $product = new Product();
-        $categories = Catgeory::all();
-
-        $product->name = $request->name;
-        $product->category_id = $request->category_id;
-        // dd($request->name);
-        $product->save();
-        return redirect('product.view')->with('success','category added successfully.',compact('product','categories') );
-    }
-     public function viewProduct(Request $request)
-    {
-
-        $product = new Product();
-
-        $category = new Catgeory();
-        $products = $product->get();
-
-        $categories = $category->get();
-        // dd( $category->get('name'));
-        return view('index_product', compact('products','category'));
-    }
-    
-     public function destroyProduct($id)
-    {
-        $product = Product::find($id);
-        $product->delete();
-        return redirect('product.index')->with('success', 'product removed.'); // -> resources/views/stocks/index.blade.php
-    }
+   
 }
