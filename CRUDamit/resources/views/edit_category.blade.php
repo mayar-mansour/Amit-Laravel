@@ -16,9 +16,11 @@
      {{-- @foreach ($categories as $category) --}}
         <form method="post" action="{{ route('cat.update',$categories->id) }}">
             @csrf
-            @if (Session::has('sucess'))
-                <div class="alert-success">{{ Session::get('sucess') }}</div>
-            @endif
+            @if(session()->has('message'))
+    <div class="alert alert-success">
+        {{ session()->get('message') }}
+    </div>
+@endif
             @if (Session::has('failed'))
                 <div class="alert-danger">{{ Session::get('failed') }}</div>
             @endif

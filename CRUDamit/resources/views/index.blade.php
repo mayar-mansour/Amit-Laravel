@@ -33,10 +33,10 @@
                     <td>{{$category->name}}</td>
 
                     <td>
-                        <form method="get" action="{{route('delete',$category->id)}}">
+                        <form method="get" action="{{route('cat.delete',$category->id)}}">
 
                             <button type="submit" class="btn btn-danger btn-sm">Delete</button>
-                            <a type="submit" href="{{route('edit',$category->id)}}" class="btn btn-primary btn-sm">update</a>
+                            <a type="submit" href="{{route('cat.edit',$category->id)}}" class="btn btn-primary btn-sm">update</a>
                             <a type="submit" href="{{route('cat.display',$category->id)}}" class="btn btn-success btn-sm">View</a>
                         </form>
                     </td>

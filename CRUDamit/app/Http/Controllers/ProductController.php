@@ -47,7 +47,7 @@ class ProductController extends Controller
 
      public function destroyProduct($id)
     {
-        dd('tesst');
+        // dd('tesst');
         $product = Product::find($id);
         $product->delete();
         return redirect('indexProduct')->with('success', 'product removed.'); // -> resources/views/stocks/index.blade.php
@@ -68,7 +68,7 @@ class ProductController extends Controller
         $productss->name = $request->get('name');
         $productss->category_id = $request->get('category_id');
         $productss->update();
-        return view('products.index_product', compact('categories', 'productss','products'));
+        return view('products.edit_product', compact('categories', 'productss','products'))->with('sucess', 'product updated successfully.');;
     }
 
 }

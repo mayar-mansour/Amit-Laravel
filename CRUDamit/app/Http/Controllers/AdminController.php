@@ -2,70 +2,59 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Admin;
 use App\Models\Catgeory;
-use App\Models\Product;
+use App\Models\User;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
 
 class AdminController extends Controller
 {
-    public function index()
+    public function register()
     {
-        return view('create_category');
+        return view('register');
     }
-    public function create(Request $request)
+
+    public function registerRequest(Request $request)
     {
         $request->validate([
-            'name' => 'required|max:30|unique:catgeories',
+            'email' => 'unique:admins,email',
+            'name' => 'unique:admins',
         ]);
-
-        // post create for each input ,then stored into input variable and request all
-        $category = $request->all();
+        $user = $request->all();
         //  dd($request->name);
-        $category = new Catgeory();
-        $category->name = $request->name;
-        // dd($request->name);
-        $category->save();
-        return redirect('view')->with(
-            'success',
-            'category added successfully.',
-            compact('category')
-        );
+        $user = new Admin();
+        $user->name = $request->name;
+        $user->email = $request->email;
+        $user->password = bcrypt($request->password);
+        $user->save();
+
+        return redirect('login');
     }
-    public function view(Request $request)
+
+    public function login()
     {
-        $category = new Catgeory();
+        return view('login');
+    }
+
+    public function loginRequest(Request $request)
+    {
+         $category = new Catgeory();
         $categories = $category->get();
-        // dd( $category->get('name'));
-        return view('index', compact('categories'));
+       $request->validate([
+            'email' => 'required',
+            'password' => 'required',
+        ]);
+       if(Auth::attempt($request->except("_token"))){
+            // success
+            return view("index", compact('categories'));
+        }
+        return view("login");
     }
-    public function editcategories($id)
+
+    public function logout()
     {
-        $categories = Catgeory::find($id);
-        // dd($categories->id);
-        $product = Product::all();
-        return view('edit_category', compact('categories', 'product'));
+        Auth::logout();
+        return redirect('login');
     }
-    public function updatecategories(Request $request)
-    {
-        $products = Product::all();
-        $categories = Catgeory::find($request->id);
-        // dd($categories);
-        $categories->name = $request->get('name');
-        $categories->update();
-        return view('index', compact('categories', 'products'));
-    }
-    public function destroycategories($id)
-    {
-        $category = Catgeory::find($id);
-        $category->delete();
-        return redirect('view')->with('success', 'Cat removed.'); // -> resources/views/stocks/index.blade.php
-    }
-    public function display($id)
-    {
-        // $category = new Catgeory();
-        $categories = Catgeory::find($id);
-        //   dd($categories);
-        return view('display_category', compact('categories'));
-    }
-   
 }

@@ -6,6 +6,7 @@ namespace App\Models;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Foundation\Auth\User as Authenticatable;
 use Illuminate\Notifications\Notifiable;
+use Illuminate\Support\Facades\Auth;
 use Laravel\Sanctum\HasApiTokens;
 
 class User extends Authenticatable
@@ -22,6 +23,12 @@ class User extends Authenticatable
         'email',
         'password',
     ];
+    //  static function login($request)
+    // {
+    //     $remember = $request->has('remember') ? true : false;
+    //     $credentials = $request->only('email', 'password');
+    //     return  Auth::guard('admin')->attempt($credentials , $remember);
+    // }
 
     /**
      * The attributes that should be hidden for serialization.
