@@ -15,7 +15,8 @@
     <body>
         <div class="container mt-5">
                  {{-- @foreach ($categories as $category) --}}
-                    <h1>{{$categories->name}}</h1>
+                 <h1>Category Name:</h1>
+                    <h5>{{$categories->name}}</h5>
                 {{-- @endforeach --}}
               </tbody>
             </table>

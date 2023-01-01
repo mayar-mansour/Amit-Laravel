@@ -26,6 +26,8 @@ class AdminController extends Controller
         $user = new Admin();
         $user->name = $request->name;
         $user->email = $request->email;
+        $user->access = $request->access;
+        // dd($request->access);
         $user->password = bcrypt($request->password);
         $user->save();
 
@@ -47,7 +49,7 @@ class AdminController extends Controller
         ]);
        if(Auth::attempt($request->except("_token"))){
             // success
-            return view("index", compact('categories'));
+            return view('categories.index', compact('categories'));
         }
         return view("login");
     }

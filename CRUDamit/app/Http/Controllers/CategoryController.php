@@ -10,7 +10,7 @@ class CategoryController extends Controller
 {
     public function index()
     {
-        return view('create_category');
+        return view('categories.create_category');
     }
     public function create(Request $request)
     {
@@ -36,14 +36,14 @@ class CategoryController extends Controller
         $category = new Catgeory();
         $categories = $category->get();
         // dd( $category->get('name'));
-        return view('index', compact('categories'));
+        return view('categories.index', compact('categories'));
     }
     public function editcategories($id)
     {
         $categories = Catgeory::find($id);
         // dd($categories->id);
         $product = Product::all();
-        return view('edit_category', compact('categories', 'product'));
+        return view('categories.edit_category', compact('categories', 'product'));
     }
     public function updatecategories(Request $request)
     {
@@ -52,7 +52,7 @@ class CategoryController extends Controller
         // dd($categories);
         $categories->name = $request->get('name');
         $categories->update();
-        return view('edit_category', compact('categories', 'products'))->with('sucess', 'category updated successfully.');;
+        return view('categories.edit_category', compact('categories', 'products'))->with('sucess', 'category updated successfully.');;
     }
     public function destroycategories($id)
     {
@@ -65,7 +65,7 @@ class CategoryController extends Controller
         // $category = new Catgeory();
         $categories = Catgeory::find($id);
         //   dd($categories);
-        return view('display_category', compact('categories'));
+        return view('categories.display_category', compact('categories'));
     }
 
 }

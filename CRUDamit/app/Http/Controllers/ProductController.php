@@ -70,5 +70,12 @@ class ProductController extends Controller
         $productss->update();
         return view('products.edit_product', compact('categories', 'productss','products'))->with('sucess', 'product updated successfully.');;
     }
+    public function displayProduct($id)
+    {
+        // $category = new Catgeory();
+        $products = Product::find($id);
+        //   dd($categories);
+        return view('products.display_product', compact('products'));
+    }
 
 }

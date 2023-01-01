@@ -21,6 +21,13 @@
         <input type="text" placeholder="name" name="name">
         <input type="email" placeholder="email" name="email">
         <input type="password" placeholder="password" name="password">
+        <label for="">Access</label>
+        {{-- <p>Insert 0 for admin access ,1 for user access</p> --}}
+        <select name="access" id="" >
+            <option value="0">0</option>
+            <option value="1" >1</option>
+        </select>
+        {{-- <input type="text" name="access" placeholder="o or 1"> --}}
         <input type="submit" value="register">
     </form>
 </body>
