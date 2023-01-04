@@ -39,13 +39,3 @@ Route::get('/edit{id}', [UserController::class, 'editUser'])->name('user.edit')-
 Route::post('/update', [UserController::class, 'updateUser'])->name('user.update')->middleware("admin");
 Route::get('/delete{id}', [UserController::class, 'destroyUser'])->name('user.delete')->middleware("admin");
 // });
-//product
-// Route::group(['prefix'=>'product','middleware'=>"auth"],function(){
-// Route::get('/index', [ProductController::class, 'indexProduct'])->name('product.index');
-// Route::get('/create', [ProductController::class, 'createProduct'])->name('product.create')->middleware("admin");
-// Route::get('/view', [ProductController::class, 'viewProduct'])->name('product.view');
-// Route::get('/edit{id}', [ProductController::class, 'editProduct'])->name('product.edit')->middleware("admin");
-// Route::post('/update', [ProductController::class, 'updateProduct'])->name('product.update')->middleware("admin");
-// Route::get('/delete{id}', [ProductController::class, 'destroyProduct'])->name('product.delete')->middleware("admin");
-// Route::get('/display{id}', [ProductController::class, 'displayProduct'])->name('product.display');
-// });
