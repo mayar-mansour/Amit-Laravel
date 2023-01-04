@@ -12,7 +12,17 @@
     <form action="{{ route('login') }}" method="post">
         @csrf
         <input type="email" placeholder="email" name="email">
+         <span class="text-danger">
+                @error('email')
+                    {{ $message }}
+                @enderror
+            </span>
         <input type="password" placeholder="password" name="password">
+         <span class="text-danger">
+                @error('password')
+                    {{ $message }}
+                @enderror
+            </span>
         <input type="submit" value="login">
     </form>
 </body>

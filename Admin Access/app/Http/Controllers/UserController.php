@@ -22,6 +22,7 @@ class UserController extends Controller
         $request->validate([
             'name' => 'required|max:30|unique:users',
             'email' => 'required|max:30|unique:users|email',
+            'password' => 'required',
         ]);
 
         // post create for each input ,then stored into input variable and request all

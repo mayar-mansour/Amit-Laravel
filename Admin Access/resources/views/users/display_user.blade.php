@@ -15,7 +15,6 @@
 
     <body>
         <div class="container mt-5">
-                 {{-- @foreach ($categories as $category) --}}
                  <h3 class="">Users Name:</h3>
                     <h6>{{$users->name}}</h6>
                  <h3>Users Email:</h3>
@@ -23,7 +22,6 @@
                 @if ($users->access == '0') <h2 class="" style="color: red;">User Access</h2>
                 @else <h2  style="color: green;">Admin Access</h2>
                 @endif
-                {{-- @endforeach --}}
               </tbody>
             </table>
         </div>

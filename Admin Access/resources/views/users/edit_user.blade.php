@@ -27,10 +27,22 @@
             <input type="hidden" name="id" value="{{$users->id}}"/>
             <label for="">User Name</label>
             <input type="text" name="name" value="{{($users->name)}}">
+            <span class="text-danger">
+                @error('name')
+                    {{ $message }}
+                @enderror
+            </span>
+            <br>
             <label for="">User Email</label>
             <input type="text" name="email" value="{{($users->email)}}">
-            <label for="">User Password</label>
-            <input type="text" name="password" value="">
+            <span class="text-danger">
+                @error('email')
+                    {{ $message }}
+                @enderror
+            </span>
+            <br>
+            {{-- <label for="">User Password</label>
+            <input type="text" name="password" value=""> --}}
              {{-- <label for="">Access</label> --}}
         {{-- <p>Insert 0 for admin access ,1 for user access</p> --}}
         {{-- <select name="access" id="" value="{{($users->access)}}" >
@@ -38,11 +50,7 @@
             <option value="0">0</option>
             <option value="1" >1</option>
         </select> --}}
-            <span class="text-danger">
-                @error('name')
-                    {{ $message }}
-                @enderror
-            </span>
+
             <button type="submit">Update</button>
         </form>
         {{-- @endforeach --}}

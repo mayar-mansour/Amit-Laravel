@@ -22,7 +22,7 @@
         <input type="email" placeholder="email" name="email">
         <input type="password" placeholder="password" name="password">
         {{-- <label for="">Access</label>
-        {{-- <p>Insert 0 for admin access ,1 for user access</p> 
+        {{-- <p>Insert 0 for admin access ,1 for user access</p>
         <select name="access" id="" >
             <option value="">no selected</option>
             <option value="0">0</option>
