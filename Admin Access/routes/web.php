@@ -29,7 +29,7 @@ Route::get("login",[AdminController::class,"login"])->name("login")->middleware(
 Route::post("login",[AdminController::class,"loginRequest"])->middleware('guest');
 Route::get("logout",[AdminController::class,"logout"])->name('logout');
 
-//category
+
 // Route::group(['prefix'=>'user','middleware'=>"auth"],function(){
 Route::get('/view', [UserController::class, 'view'])->name('view');
 Route::get('/index', [UserController::class, 'index'])->name('index');
